@@ -1,3 +1,3 @@
-export const registration = async () => {};
+export const getTodoList = async () => {};
 
-export const authorization = async () => {};
+export const setTodoList = async () => {};

@@ -1,0 +1,25 @@
+
+
+.container {
+    display: flex;
+    margin-bottom: 32px;
+
+    & .form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+       & .inputs {
+        display: flex;
+        min-width: 250px;
+        flex-wrap: wrap;
+
+
+        & .textField {
+         flex-grow: 1;
+         margin-right: 10px;
+     } 
+
+       }
+    }
+    
+}

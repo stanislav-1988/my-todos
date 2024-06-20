@@ -10,10 +10,9 @@
         caret-color: auto;
         width: 100%;
         margin-top: 0px;
-        padding-right: 40px;
         }
     & .styleInput::placeholder {
-        color: var(--text-tertiary);
+        color: var(--tertiary);
         }
     & .label {
         align-self: flex-end;

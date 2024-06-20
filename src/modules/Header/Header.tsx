@@ -35,9 +35,11 @@ export const Header: FC = observer(() => {
 
   return (
     <div className={styles.headerContainer}>
-      <h3>Приватный список дел</h3>
       <div className={styles.signIn}>
         <Link to={ROUTES.AUTHORIZATION_ROUTE}>Вход</Link>
+      </div>
+      <div className={styles.header}>
+        <h1>Приватный список дел</h1>
       </div>
       <div className={styles.signUp}>
         <Link to={ROUTES.REGISTRATION_ROUTE}>Регистрация</Link>

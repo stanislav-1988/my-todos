@@ -2,9 +2,10 @@ import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { Authorization, Header, Registration } from '../modules';
-import { FirstPage } from '../modules/FirstPage';
-import { Loader } from '../modules/Loader';
+import {
+  Authorization, FirstPage, Header, Loader, Registration, TodoCreate,
+} from '../modules';
+import { TodosPage } from '../modules/TodosPage/TodosPage';
 import { ROUTES } from '../providers';
 import loonaStore from '../store/myStore';
 import styles from './App.module.scss';
@@ -32,6 +33,8 @@ export const App = observer(() => {
         <Route path={ROUTES.ROOT_ROUTE} element={<FirstPage />} />
         <Route path={ROUTES.AUTHORIZATION_ROUTE} element={<Authorization />} />
         <Route path={ROUTES.REGISTRATION_ROUTE} element={<Registration />} />
+        <Route path={ROUTES.CREATE_TODO_PAGE_ROUTE} element={<TodoCreate />} />
+        <Route path={ROUTES.MY_TODO_PAGE_ROUTE} element={<TodosPage />} />
         <Route path="*" element={<FirstPage />} />
       </Routes>
     </div>

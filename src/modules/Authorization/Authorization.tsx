@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { authorizationInfoLsKey } from '../../assets/constants';
 import { InputLabel, InputReusable } from '../../components';
 import { ConfirmButton } from '../../components/ConfirmButton';
+import { ROUTES } from '../../providers';
 import myStore from '../../store/myStore';
 import styles from './authorization.module.scss';
 
@@ -19,6 +20,7 @@ export const Authorization: FC = observer(() => {
     access, setAccess, setName, name: firstName,
   } = myStore;
   const [thereIsAccess, setThereIsAccess] = useState(false);
+  const navigate = useNavigate();
 
   const {
     register,
@@ -30,12 +32,7 @@ export const Authorization: FC = observer(() => {
   });
 
   if (access) {
-    return (
-      <div className={styles.secretPage}>
-        <h1 className={styles.h}>2345678765432345678</h1>
-      </div>
-
-    );
+    navigate(ROUTES.CREATE_TODO_PAGE_ROUTE);
   }
 
   const sendingDataForAuthorization = (data: AuthorizationType) => {

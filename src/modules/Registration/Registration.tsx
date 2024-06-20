@@ -1,10 +1,11 @@
 import { observer } from 'mobx-react-lite';
 import React, { useForm } from 'react-hook-form';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { authorizationInfoLsKey } from '../../assets/constants';
 import { InputLabel, InputReusable } from '../../components';
 import { ConfirmButton } from '../../components/ConfirmButton';
+import { ROUTES } from '../../providers';
 import myStore from '../../store/myStore';
 import styles from './registration.module.scss';
 
@@ -17,6 +18,7 @@ type RegistrationType = {
 };
 
 export const Registration = observer(() => {
+  const navigate = useNavigate();
   const {
     successfulRegistration,
     setName,
@@ -42,7 +44,7 @@ export const Registration = observer(() => {
   };
 
   if (successfulRegistration) {
-    return <Navigate to="/sign-in" />;
+    navigate(ROUTES.AUTHORIZATION_ROUTE);
   }
 
   return (

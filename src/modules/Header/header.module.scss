@@ -1,16 +1,14 @@
-
-
 .headerContainer {
    display: flex;
    justify-content: space-between;
-   margin: 0;
-   padding: 0;
+   margin-bottom: 30px;
    height: 80px;
+   padding: 0;
+   box-shadow: 5px 5px 20px 10px rgba(97, 122, 125, 0.5);
    background-color: var(--background-elements-primary);
    & h3 {
       margin: auto;
       margin-left: 15px;
-      width: 220px;
       font-family: 'Inter';
       font-style: normal;
       font-weight: 400;
@@ -21,16 +19,62 @@
    & .greetings {
       margin-right: 10px;
    }
-   & h3:hover {
-      color: #07fa1b;
+
+   & .header {
+      display: flex;
+      justify-content: center;
+      margin: auto;
+      background: var(--background-elements-primary);
+      text-align: center;
+    }
+    & .header h1 {
+      font-family: 'Righteous', cursive;
+      position: relative;
+      color: #3CA1D9; 
+      display: inline-block;
+      border-top: 2px solid;
+      border-bottom: 2px solid;
+      font-size: 3em;
+      padding: 11px 60px;
+      margin: 0; 
+      line-height: 1;
+    }
+    & .header h1:before, .header h1:after {
+      content: ""; 
+      position: absolute;
+      top: 0;
+      width: 30px;
+      height: 100%;
+      border-left: 2px solid;
+      border-right: 2px solid;
+      background: repeating-linear-gradient(180deg, transparent, transparent 2px, #3CA1D9 2px, #3CA1D9 4px);
+    }
+    & .header h1:before {left: 0;}
+    & .header h1:after {right: 0;}
+    
+@media (max-width: 890px) {
+   & .header h1 {
+      font-size: 2em;
    }
+}
+@media (max-width: 700px) {
+   & .header h1 {
+      font-size: 0.8em;
+   } 
+}
+@media (max-width: 360px) {
+   & .header h1 {
+      display: none;
+   } 
+}
+
+
    & .signIn {
       border-radius: 5px;
       padding-top: 7px;
-      width: 109px;
+      padding-left: 15px;
       height: 40px;
       margin: 13px;
-      margin-left: auto;
       text-align: center;
       & a {
          font-family: 'Inter';
@@ -45,6 +89,7 @@
    & .signUp {
       border-radius: 5px;
       padding-top: 7px;
+      padding-right: 15px;
       width: 109px;
       height: 40px;
       margin: 13px ;
@@ -60,7 +105,6 @@
    }
    & .signUp:hover,
      .signIn:hover {
-      border: 1px solid #52C41A;
       & a {
       color: #52C41A;          
       }
@@ -96,12 +140,4 @@
    & a {
       text-decoration: none;
    }
-}
-
-@media (max-width: 325px) {
-   .headerContainer {
-      & h3 {
-         display: none;
-      }
- }
 }
