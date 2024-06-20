@@ -18,6 +18,9 @@
       line-height: 28px;
       color: rgba(0, 0, 0, 0.85);
    }
+   & .greetings {
+      margin-right: 10px;
+   }
    & h3:hover {
       color: #07fa1b;
    }
@@ -61,6 +64,13 @@
       & a {
       color: #52C41A;          
       }
+   }
+   & .img {
+      display: flex;
+      overflow: hidden;
+      margin-right: auto;
+      border: 1px solid var(--tertiary);
+      border-radius: 50%;
    }
    & .logOut {
       margin: 15px 22px auto 14px;

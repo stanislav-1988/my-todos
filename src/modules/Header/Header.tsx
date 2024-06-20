@@ -2,14 +2,14 @@ import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line import/no-cycle
+import DefaulAvatar from '../../assets/icons/defaultAvatar.svg';
 import { ROUTES } from '../../providers';
 import myStore from '../../store/myStore';
 import styles from './header.module.scss';
 
 export const Header: FC = observer(() => {
   const {
-    access, setAccess, setSuccessfulRegistration,
+    access, setAccess, setSuccessfulRegistration, name,
   } = myStore;
 
   const logOut = () => {
@@ -17,12 +17,15 @@ export const Header: FC = observer(() => {
     setAccess(false);
   };
 
-  if (access) {
+  if (access && name) {
     return (
       <div className={styles.headerContainer}>
-        <h3>Приватный список дел</h3>
+        <h3 className={styles.greetings}>{`Привет ${name}`}</h3>
+        <div className={styles.img}>
+          <img src={DefaulAvatar} alt="Hello" />
+        </div>
         <div className={styles.logOut}>
-          <Link to={ROUTES.AUTHORIZATION_ROUTE} onClick={logOut}>
+          <Link to={ROUTES.ROOT_ROUTE} onClick={logOut}>
             Log Out
           </Link>
         </div>

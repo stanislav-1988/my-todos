@@ -3,6 +3,7 @@ import React, { FC, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
+import { authorizationInfoLsKey } from '../../assets/constants';
 import { InputLabel, InputReusable } from '../../components';
 import { ConfirmButton } from '../../components/ConfirmButton';
 import myStore from '../../store/myStore';
@@ -15,7 +16,7 @@ type AuthorizationType = {
 
 export const Authorization: FC = observer(() => {
   const {
-    access, setAccess, password, email,
+    access, setAccess, setName, name: firstName,
   } = myStore;
   const [thereIsAccess, setThereIsAccess] = useState(false);
 
@@ -38,13 +39,17 @@ export const Authorization: FC = observer(() => {
   }
 
   const sendingDataForAuthorization = (data: AuthorizationType) => {
-    console.debug(data);
-    if (email === data.email || password === data.password) {
-      setAccess(true);
-      reset();
-      setThereIsAccess(false);
-    } else {
-      setThereIsAccess(true);
+    const accessData = localStorage.getItem(`${authorizationInfoLsKey}_${data.email}`);
+    if (accessData) {
+      const { email, password, name } = JSON.parse(accessData || '');
+      if (!firstName) setName(name);
+      if (email === data.email || password === data.password) {
+        setAccess(true);
+        reset();
+        setThereIsAccess(false);
+      } else {
+        setThereIsAccess(true);
+      }
     }
   };
 

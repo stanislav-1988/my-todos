@@ -2,6 +2,7 @@ import { observer } from 'mobx-react-lite';
 import React, { useForm } from 'react-hook-form';
 import { Link, Navigate } from 'react-router-dom';
 
+import { authorizationInfoLsKey } from '../../assets/constants';
 import { InputLabel, InputReusable } from '../../components';
 import { ConfirmButton } from '../../components/ConfirmButton';
 import myStore from '../../store/myStore';
@@ -32,7 +33,7 @@ export const Registration = observer(() => {
   } = useForm<RegistrationType>();
 
   const registrationData = (data: RegistrationType) => {
-    console.debug(data);
+    localStorage.setItem(`${authorizationInfoLsKey}_${data.email}`, JSON.stringify({ email: data.email, password: data.password, name: data.name }));
     setName(data.name);
     setEmail(data.email);
     setPassword(data.password);
@@ -55,11 +56,11 @@ export const Registration = observer(() => {
               required: 'Введите имя',
               minLength: {
                 value: 3,
-                message: 'минимальная длинна логина 3 символов',
+                message: 'минимальная длинна имени 3 символов',
               },
               maxLength: {
                 value: 20,
-                message: 'максимальная длинна логина 20 символов',
+                message: 'максимальная длинна имени 20 символов',
               },
             })}
             type="text"
