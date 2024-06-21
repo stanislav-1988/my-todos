@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import classNames from 'classnames';
+import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
 
 import { setTodoListLS } from '../../api';
@@ -16,7 +17,7 @@ interface ITodo {
   id: string;
 }
 
-export const Todo: FC<ITodo> = ({
+export const Todo: FC<ITodo> = observer(({
   text, done, date, id,
 }) => {
   const {
@@ -86,4 +87,4 @@ export const Todo: FC<ITodo> = ({
       </section>
     </div>
   );
-};
+});

@@ -46,7 +46,6 @@ class MyStore {
     this.email = '';
     this.name = '';
     this.access = false;
-    this.isLoading = false;
     this.todoList = [{
       todo: 'У вас нет текущих задач',
       done: false,
@@ -55,10 +54,6 @@ class MyStore {
     }];
     this.password = '';
     this.successfulRegistration = false;
-  };
-
-  setIsLoading = (isLoading: boolean): void => {
-    this.isLoading = isLoading;
   };
 
   setAccess = (access: boolean) => {

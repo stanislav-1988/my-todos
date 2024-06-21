@@ -10,7 +10,9 @@ import styles from './todosPage.module.scss';
 
 export const TodosPage: FC = observer(() => {
   const navigate = useNavigate();
-  const { access, name, todoList } = myStore;
+  const {
+    access, name, todoList,
+  } = myStore;
 
   useEffect(() => {
     if (!access && !name) navigate(ROUTES.ROOT_ROUTE);

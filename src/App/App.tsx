@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import React, { useEffect } from 'react';
+import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import {
@@ -11,17 +11,9 @@ import { ROUTES } from '../providers';
 import loonaStore from '../store/myStore';
 import styles from './App.module.scss';
 
-export const App = observer(() => {
-  const {
-    isLoading, setIsLoading,
-  } = loonaStore;
-  useEffect(() => {
-    if (isLoading) {
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 5000);
-    }
-  }, [isLoading, setIsLoading]);
+export const App: FC = observer(() => {
+  const { isLoading } = loonaStore;
+
   if (isLoading) {
     return <Loader />;
   }
