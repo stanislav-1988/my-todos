@@ -17,7 +17,7 @@ type AuthorizationType = {
 
 export const Authorization: FC = observer(() => {
   const {
-    access, setAccess, setName, name: firstName,
+    access, setAccess, setName, name: firstName, setTodoList, setTooltipText, setEmail,
   } = myStore;
   const [thereIsAccess, setThereIsAccess] = useState(false);
   const navigate = useNavigate();
@@ -32,21 +32,29 @@ export const Authorization: FC = observer(() => {
   });
 
   if (access) {
-    navigate(ROUTES.CREATE_TODO_PAGE_ROUTE);
+    navigate(ROUTES.MY_TODO_PAGE_ROUTE);
   }
 
   const sendingDataForAuthorization = (data: AuthorizationType) => {
     const accessData = localStorage.getItem(`${authorizationInfoLsKey}_${data.email}`);
+    const todoListLS = localStorage.getItem(data.email);
     if (accessData) {
       const { email, password, name } = JSON.parse(accessData || '');
       if (!firstName) setName(name);
       if (email === data.email || password === data.password) {
+        setEmail(data.email);
+        if (todoListLS) {
+          const newTodoList = JSON.parse(todoListLS);
+          setTodoList(newTodoList);
+        }
         setAccess(true);
         reset();
         setThereIsAccess(false);
       } else {
         setThereIsAccess(true);
       }
+    } else {
+      setTooltipText('Пользователь не найден');
     }
   };
 

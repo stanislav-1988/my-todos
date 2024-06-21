@@ -10,16 +10,20 @@
         width: 100%;
        & .inputs {
         display: flex;
-        min-width: 250px;
         flex-wrap: wrap;
 
 
         & .textField {
          flex-grow: 1;
          margin-right: 10px;
-     } 
+         } 
 
        }
+       & .inputs div {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+         }
     }
     
 }

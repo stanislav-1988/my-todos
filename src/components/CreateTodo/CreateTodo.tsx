@@ -1,7 +1,12 @@
 import { observer } from 'mobx-react-lite';
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
+import { setTodoListLS } from '../../api';
+import { ROUTES } from '../../providers';
+import myStore from '../../store/myStore';
 import { ConfirmButton } from '../ConfirmButton';
 import { InputLabel } from '../InputLabel';
 import { InputReusable } from '../InputReusable';
@@ -13,6 +18,15 @@ type CreateTodoType = {
 };
 
 export const CreateTodo: FC = observer(() => {
+  const navigate = useNavigate();
+  const {
+    todoList, setTodoList, setTooltipText, email, name, access,
+  } = myStore;
+
+  useEffect(() => {
+    if (!access && !name) navigate(ROUTES.ROOT_ROUTE);
+  }, [access, name, navigate]);
+
   const {
     register,
     formState: { errors },
@@ -24,7 +38,10 @@ export const CreateTodo: FC = observer(() => {
 
   const submit = (data: CreateTodoType) => {
     reset();
-    console.debug(data);
+    const newTodoList = [...todoList, { ...data, id: uuidv4(), done: false }];
+    setTodoList(newTodoList);
+    setTodoListLS(newTodoList, email);
+    setTooltipText('Задача добавлена!');
   };
 
   return (

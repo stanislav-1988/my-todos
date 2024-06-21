@@ -1,0 +1,46 @@
+.container { 
+    display: flex;
+    flex-direction: column;
+    min-height: 80px;
+    
+    & .time {
+        margin: 10px;
+        color: var(--text-primary);
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+    }
+    & .timeDone {
+        color: var(--text-secondary);
+    }
+    
+    & .todo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        box-shadow: 1px 1px 10px 5px rgba(97, 122, 125, 0.5);
+
+        & .text {
+            display: flex;
+            flex-direction: column;
+            margin: 5px 15px;
+            padding: 5px 15px;  
+            box-shadow: 1px 1px 10px 5px rgba(97, 122, 125, 0.5);
+
+            & .doneTodo {
+                text-decoration: line-through;
+            }
+        }
+        & button {
+            padding: 10px;
+            margin: auto 0px;
+            & img {
+                min-width: 40px;
+                min-height: 40px;
+
+            }
+        }
+    }
+}

@@ -115,29 +115,16 @@
       margin-right: auto;
       border: 1px solid var(--tertiary);
       border-radius: 50%;
-   }
+   }logOutButton
    & .logOut {
       margin: 15px 22px auto 14px;
       text-decoration: none;
       padding: 10px 18px;
       border: 1px solid rgba(0, 0, 0, 0.75);
       border-radius: 5px;
-      & a {
-         font-family: 'Inter';
-         font-style: normal;
-         font-weight: 400;
-         font-size: 18px;
-         line-height: 28px;
-         color: rgba(0, 0, 0, 0.75);
-      }
    }
-   & .logOut:hover {
-      border: 2px solid #52C41A;
-      & a {
-         color:#52C41A;
-      }
-   }
-   & a {
-      text-decoration: none;
+   & .logOutButton {
+      margin: auto 15px;
+      padding: 20px;
    }
 }

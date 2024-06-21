@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 
 import {
   Authorization, FirstPage, Header, Loader, Registration, TodoCreate,
+  TooltipPopup,
 } from '../modules';
 import { TodosPage } from '../modules/TodosPage/TodosPage';
 import { ROUTES } from '../providers';
@@ -21,7 +22,6 @@ export const App = observer(() => {
       }, 5000);
     }
   }, [isLoading, setIsLoading]);
-
   if (isLoading) {
     return <Loader />;
   }
@@ -37,6 +37,7 @@ export const App = observer(() => {
         <Route path={ROUTES.MY_TODO_PAGE_ROUTE} element={<TodosPage />} />
         <Route path="*" element={<FirstPage />} />
       </Routes>
+      <TooltipPopup />
     </div>
   );
 });

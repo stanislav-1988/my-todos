@@ -1,20 +1,22 @@
 import { observer } from 'mobx-react-lite';
 import React, { FC } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import DefaulAvatar from '../../assets/icons/defaultAvatar.svg';
+import exit from '../../assets/icons/Exit.svg';
 import { ROUTES } from '../../providers';
 import myStore from '../../store/myStore';
 import styles from './header.module.scss';
 
 export const Header: FC = observer(() => {
+  const navigate = useNavigate();
   const {
-    access, setAccess, setSuccessfulRegistration, name,
+    access, clearStore, name,
   } = myStore;
 
   const logOut = () => {
-    setSuccessfulRegistration(false);
-    setAccess(false);
+    clearStore();
+    navigate(ROUTES.ROOT_ROUTE);
   };
 
   if (access && name) {
@@ -22,13 +24,15 @@ export const Header: FC = observer(() => {
       <div className={styles.headerContainer}>
         <h3 className={styles.greetings}>{`Привет ${name}`}</h3>
         <div className={styles.img}>
-          <img src={DefaulAvatar} alt="Hello" />
+          <img className={styles.avatar} src={DefaulAvatar} alt="Hello" />
         </div>
-        <div className={styles.logOut}>
-          <Link to={ROUTES.ROOT_ROUTE} onClick={logOut}>
-            Log Out
-          </Link>
-        </div>
+        <button
+          type="button"
+          onClick={logOut}
+          className={styles.logOutButton}
+        >
+          <img src={exit} alt="exit" />
+        </button>
       </div>
     );
   }

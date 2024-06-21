@@ -15,6 +15,10 @@ export const TodoCreate: FC = observer(() => {
     if (!access && name) navigate(ROUTES.ROOT_ROUTE);
   }, [access, name, navigate]);
 
+  if (access && name) {
+    navigate(ROUTES.ROOT_ROUTE);
+  }
+
   const handleViewTask = () => {
     navigate(ROUTES.MY_TODO_PAGE_ROUTE);
   };

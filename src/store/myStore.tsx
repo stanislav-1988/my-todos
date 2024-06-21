@@ -1,5 +1,12 @@
 import { makeAutoObservable } from 'mobx';
 
+export type TodoListType = {
+  todo: string,
+  done: boolean,
+  date: string;
+  id: string,
+};
+
 class MyStore {
   /**
    * Лоадер
@@ -13,6 +20,18 @@ class MyStore {
 
   name: string = '';
 
+  /**
+   * Текст всплывающей подсказки
+   */
+  tooltipText: string = '';
+
+  todoList: Array<TodoListType> = [{
+    todo: 'У вас нет текущих задач',
+    done: false,
+    date: 'сегодня',
+    id: '1',
+  }];
+
   email: string = '';
 
   password: string = '';
@@ -22,6 +41,21 @@ class MyStore {
   constructor() {
     makeAutoObservable(this);
   }
+
+  clearStore = () => {
+    this.email = '';
+    this.name = '';
+    this.access = false;
+    this.isLoading = false;
+    this.todoList = [{
+      todo: 'У вас нет текущих задач',
+      done: false,
+      date: 'сегодня',
+      id: '1',
+    }];
+    this.password = '';
+    this.successfulRegistration = false;
+  };
 
   setIsLoading = (isLoading: boolean): void => {
     this.isLoading = isLoading;
@@ -33,6 +67,14 @@ class MyStore {
 
   setName = (name: string) => {
     this.name = name;
+  };
+
+  setTooltipText = (text: string) => {
+    this.tooltipText = text;
+  };
+
+  setTodoList = (newList: Array<TodoListType>) => {
+    this.todoList = newList;
   };
 
   setEmail = (email: string) => {

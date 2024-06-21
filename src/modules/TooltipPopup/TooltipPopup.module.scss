@@ -1,0 +1,24 @@
+.container {
+    position: fixed;
+    bottom: 68px;
+    left: 50%;
+    transform: translate(-50%);
+    display: inline-flex;
+    padding: 8px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    border-radius: 12px;
+    background: var(--background-secondary);
+    backdrop-filter: blur(12px);
+    white-space: nowrap;
+
+    & p {
+        color: var(--text-static-white);
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+    }
+}
